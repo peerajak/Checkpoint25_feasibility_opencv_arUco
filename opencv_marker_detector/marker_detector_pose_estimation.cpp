@@ -32,7 +32,7 @@ int main() {
    //readCameraParameters(filename, cameraMatrix, distCoeffs);
    // Set coordinate system
     cv::Mat objPoints(4, 1, CV_32FC3);
-    float markerLength = 0.05;
+    float markerLength = 0.02;
     objPoints.ptr<cv::Vec3f>(0)[0] = cv::Vec3f(-markerLength/2.f, markerLength/2.f, 0);
     objPoints.ptr<cv::Vec3f>(0)[1] = cv::Vec3f(markerLength/2.f, markerLength/2.f, 0);
     objPoints.ptr<cv::Vec3f>(0)[2] = cv::Vec3f(markerLength/2.f, -markerLength/2.f, 0);
@@ -59,7 +59,7 @@ int main() {
             cout << "There are " << ids.size() << " markers detected." << endl;
 
             int nMarkers = corners.size();
-            std::vector<cv::Vec3d> rvecs(nMarkers), tvecs(nMarkers);
+            std::vector<cv::Vec3d> rvecs(nMarkers), tvecs(nMarkers);//(nMarkers) specified how many vectors are initialized
             // Calculate pose for each marker
             for (int i = 0; i < nMarkers; i++) {
                 solvePnP(objPoints, corners.at(i), cameraMatrix, distCoeffs, rvecs.at(i), tvecs.at(i));
@@ -67,8 +67,13 @@ int main() {
             //Draw axis for each marker
             for(unsigned int i = 0; i < ids.size(); i++) {
                 cv::drawFrameAxes(detectingImage, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.1);
+                if(ids.at(i) == 40 || ids.at(i) == 98){
+                  cout << "id " << ids.at(i) <<" " << endl << " "  << tvecs[i] << endl << endl;
+                }
             }
-       
+            
+            
+
       }
       
       imshow("Video Player", detectingImage);//Showing the video//
