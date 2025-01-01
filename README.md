@@ -4,7 +4,7 @@ Propose: To use ROS2 humble, and Opencv, together to do camera calibration, and 
 
 ![alt text](opencv_marker_frames.png)
 
-Step 1. Use Ros2 humble package to do camera calibration
+## Step 1. Use Ros2 humble package to do camera calibration
 
 follow this tutorial
 
@@ -33,8 +33,33 @@ something like ('Wrote calibration data to', '/tmp/calibrationdata.tar.gz')
 
 suppose the calibrated file is saved at /tmp/calibrationdata.tar.gz
 
+### step1 alternatively, use ROS1 to do camera calibration
 
-Step 2. Look at yaml file inside the calibrationdata.tar.gz, rewrite marker_detector_pose_estimation.cpp for distCoeffs, and cameraMatrix Mat variables.
+Terminal 1
+
+```
+roscore
+```
+
+Terminal 2
+
+```
+sudo apt-get install ros-noetic-usb-cam
+```
+
+```
+roslaunch usb_cam usb_cam-test.launch 
+```
+
+Terminal 3
+
+```
+rosrun camera_calibration cameracalibrator.py --size 7x10 --square 0.02 image:=/usb_cam/image_raw camera:=/usb_cam
+```
+
+
+
+## Step 2. Look at yaml file inside the calibrationdata.tar.gz, rewrite marker_detector_pose_estimation.cpp for distCoeffs, and cameraMatrix Mat variables.
 
 compile opencv_marker_detector
 

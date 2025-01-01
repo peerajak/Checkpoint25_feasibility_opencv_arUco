@@ -68,7 +68,8 @@ int main() {
             for(unsigned int i = 0; i < ids.size(); i++) {
                 cv::drawFrameAxes(detectingImage, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.1);
                 if(ids.at(i) == 40 || ids.at(i) == 98){
-                  cout << "id " << ids.at(i) <<" " << endl << " "  << tvecs[i] << endl << endl;
+                  cout << "id " << ids.at(i) <<" rvects " << endl << " "  <<rvecs[i] << endl;
+                  cout << "id " << ids.at(i) <<" tvects " << endl << " "  <<tvecs[i] << endl;
                 }
             }
             
