@@ -38,14 +38,12 @@ suppose the calibrated file is saved at /tmp/calibrationdata.tar.gz
 Terminal 1
 
 ```
-roscore
+sudo apt-get install ros-noetic-usb-cam
 ```
 
 Terminal 2
 
-```
-sudo apt-get install ros-noetic-usb-cam
-```
+
 
 ```
 roslaunch usb_cam usb_cam-test.launch 
@@ -76,6 +74,13 @@ run the program to detect.
 ```
 cd opencv_marker_detector/build
 ./PoseEstimation
+```
+
+or
+
+```
+cd opencv_marker_detector/
+jupyter lab marker_detector_pose_estimation.ipynb
 ```
 
 Near future: How to submit calibration params to marker detector? ROS topic? file?
