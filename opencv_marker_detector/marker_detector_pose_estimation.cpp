@@ -32,7 +32,7 @@ int main() {
    //readCameraParameters(filename, cameraMatrix, distCoeffs);
    // Set coordinate system
     cv::Mat objPoints(4, 1, CV_32FC3);
-    float markerLength = 0.02;
+    float markerLength = 0.026;
     objPoints.ptr<cv::Vec3f>(0)[0] = cv::Vec3f(-markerLength/2.f, markerLength/2.f, 0);
     objPoints.ptr<cv::Vec3f>(0)[1] = cv::Vec3f(markerLength/2.f, markerLength/2.f, 0);
     objPoints.ptr<cv::Vec3f>(0)[2] = cv::Vec3f(markerLength/2.f, -markerLength/2.f, 0);
@@ -68,8 +68,8 @@ int main() {
             for(unsigned int i = 0; i < ids.size(); i++) {
                 cv::drawFrameAxes(detectingImage, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.1);
                 if(ids.at(i) == 40 || ids.at(i) == 98){
-                  cout << "id " << ids.at(i) <<" rvects " << endl << " "  <<rvecs[i] << endl;
-                  cout << "id " << ids.at(i) <<" tvects " << endl << " "  <<tvecs[i] << endl;
+                  cout << "id " << ids.at(i) <<" rvects " <<rvecs[i] << endl;
+                  cout << "id " << ids.at(i) <<" tvects " <<tvecs[i] << endl;
                 }
             }
             
